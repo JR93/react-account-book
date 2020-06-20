@@ -5,7 +5,7 @@ import MonthPicker from '../MonthPicker'
 
 let props = {
   year: 2018,
-  month: 10,
+  month: 8,
   onChange: jest.fn()
 }
 
@@ -20,7 +20,7 @@ describe('test MonthPicker component', () => {
   })
   it('render the correct year and month, show correct dropdown status', () => {
     const text = wrapper.find('.dropdown-toggle').first().text()
-    expect(text).toEqual('2018年 10月')
+    expect(text).toEqual('2018年 08月')
     expect(wrapper.find('.dropdown-menu').length).toEqual(0)
     expect(wrapper.state('isOpen')).toEqual(false)
     expect(wrapper.state('selectedYear')).toEqual(props.year)
@@ -31,11 +31,15 @@ describe('test MonthPicker component', () => {
     expect(wrapper.find('.dropdown-menu').length).toEqual(1)
     expect(wrapper.find('.years-range .dropdown-item').length).toEqual(9)
     expect(wrapper.find('.months-range .dropdown-item').length).toEqual(12)
-    expect(wrapper.find('.years-range .dropdown-item.active').text()).toEqual('2018 年')
-    expect(wrapper.find('.months-range .dropdown-item.active').text()).toEqual('10 月')
+    expect(wrapper.find('.years-range .dropdown-item.active').text())
+    .toEqual('2018 年')
+    expect(wrapper.find('.months-range .dropdown-item.active').text())
+    .toEqual('08 月')
     // the first year should be the current year minus 4
-    expect(wrapper.find('.years-range .dropdown-item').first().text()).toEqual(`${props.year - 4} 年`)
-    expect(wrapper.find('.months-range .dropdown-item').first().text()).toEqual('01 月')
+    expect(wrapper.find('.years-range .dropdown-item').first().text())
+    .toEqual(`${props.year - 4} 年`)
+    expect(wrapper.find('.months-range .dropdown-item').first().text())
+    .toEqual('01 月')
   })
   it('click the year&month item, should trigger the right status change', () => {
     wrapper.find('.dropdown-toggle').simulate('click')
@@ -56,13 +60,12 @@ describe('test MonthPicker component', () => {
     wrapper.find('.dropdown-toggle').simulate('click')
     expect(wrapper.state('isOpen')).toEqual(true)
     expect(wrapper.find('.dropdown-menu').length).toEqual(1)
-
     eventMap.click({
       target: ReactDOM.findDOMNode(wrapper.instance())
     })
     expect(wrapper.state('isOpen')).toEqual(true)
     eventMap.click({
-      target: document
+      target: document,
     })
     expect(wrapper.state('isOpen')).toEqual(false)
   })

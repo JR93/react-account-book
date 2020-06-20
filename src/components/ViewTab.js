@@ -12,7 +12,7 @@ const ViewTab = ({ activeTab, onTabChange }) => (
     <li className="nav-item">
       <a
         className={generateLinkClass(activeTab, LIST_VIEW)}
-        href=";"
+        href="#"
         onClick={(event) => {event.preventDefault(); onTabChange(LIST_VIEW)}}
       >
         <Ionicon
@@ -27,7 +27,7 @@ const ViewTab = ({ activeTab, onTabChange }) => (
     <li className="nav-item">
       <a
         className={generateLinkClass(activeTab, CHART_VIEW)}
-        href=";"
+        href="#"
         onClick={(event) => {event.preventDefault(); onTabChange(CHART_VIEW)}}
       >
         <Ionicon

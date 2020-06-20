@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 const TotalPrice = ( { income, outcome } ) => (
   <div className="row">
     <div className="col">
